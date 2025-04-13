@@ -1,0 +1,141 @@
+/* Estilos Gerais */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #333;
+}
+
+/* Estilos dos Containers */
+.inicio, #quiz-container {
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  width: 90%;
+  max-width: 600px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.inicio h2, #quiz-container h2 {
+  color: #4a6fa5;
+  margin-bottom: 25px;
+  font-size: 24px;
+}
+.inicio label{
+  font-weight: bold;
+}
+
+/* Estilos do Dropdown */
+#repositorios {
+  padding: 12px 20px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  margin: 15px 0;
+  width: 80%;
+  background-color: #f9f9f9;
+  transition: border 0.3s;
+}
+
+#repositorios:focus {
+  border-color: #4a6fa5;
+  outline: none;
+}
+
+/* Estilos dos Botões */
+button {
+  background-color: #4a6fa5;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-top: 10px;
+}
+
+button:hover {
+  background-color: #3a5a80;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+/* Estilos das Perguntas */
+#questoes {
+  margin-top: 20px;
+}
+
+.pergunta {
+  font-size: 18px;
+  margin-bottom: 25px;
+  font-weight: 500;
+  color: #333;
+  line-height: 1.4;
+}
+
+/* Estilos das Opções */
+.opcao {
+  background-color: #f5f7fa;
+  border: 2px solid #e1e5ee;
+  border-radius: 8px;
+  padding: 12px 15px;
+  margin: 10px 0;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.opcao:hover {
+  background-color: #e1e5ee;
+  border-color: #c3cfe2;
+}
+
+/* Estilos para Respostas Corretas/Erradas */
+.opcao.correct {
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+  color: #155724;
+}
+
+.opcao.wrong {
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+  color: #721c24;
+}
+
+/* Classe para Esconder Elementos */
+.hide {
+  display: none;
+}
+
+/* Estilos da Mensagem Final */
+#quiz-container div {
+  margin-bottom: 15px;
+}
+
+/* Design Responsivo */
+@media (max-width: 500px) {
+  .inicio, #quiz-container {
+      padding: 20px;
+      width: 85%;
+  }
+  
+  .pergunta {
+      font-size: 16px;
+  }
+  
+  .opcao {
+      padding: 10px 12px;
+  }
+}
