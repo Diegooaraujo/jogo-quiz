@@ -79,17 +79,19 @@ const questions3 = [
         respCorreta: "forEach"
     }
 ];
+
+//variaveis globais
 let questoesAtuais = [];
 let numQuestao = 0;
 let respCorretas = 0;
 let respErradas = 0;
 
 
-
+//container principal
 const container = document.querySelector("#quiz-container");
 
 
-
+// FUNÇÃO PARA MOSTRAR QUESTÕES 
 function mostrarQuestao(index, repositorio) {
 
 
@@ -105,7 +107,7 @@ function mostrarQuestao(index, repositorio) {
     questaoEl.appendChild(questaoText);
     questoesConteiner.appendChild(questaoEl);
 
-    // Cria as opções
+    // Cria as opções de respostas 
     q.opcoes.forEach(optionText => {
         const opcao = document.createElement("div");
         opcao.className = "opcao";
@@ -121,12 +123,10 @@ function mostrarQuestao(index, repositorio) {
 
 
         // Evento de click
-        //verificar resposta 
-
-
         opcao.addEventListener("click", () => {
             const todasOpcoes = document.querySelectorAll(".opcao");
-            todasOpcoes.forEach(opt => opt.style.pointerEvents = "none"); //desativar os cliques para as outras opções
+            //desativar os cliques para as outras opções
+            todasOpcoes.forEach(opt => opt.style.pointerEvents = "none"); 
             if (optionText === q.respCorreta) {
                 opcao.classList.add("correct");
                 respCorretas++;
@@ -145,6 +145,7 @@ function mostrarQuestao(index, repositorio) {
     });
 }
 
+//MENSAGEM FINAL
 function mensagemFinal() {
     const msg = document.createElement("div");
     msg.textContent = "Parabéns! Você completou o quiz!";
@@ -154,10 +155,9 @@ function mensagemFinal() {
 
     const acertos = document.createElement("div")
 
-    acertos.textContent = `você acertou ${respCorretas} de 5 perguntas`;
-
-
-    const jogarNovamente = document.createElement("button");
+    acertos.textContent = `você acertou ${respCorretas} de 5 perguntas`
+    // Evento para reiniciar o quiz
+    const jogarNovamente = document.createElement("button")
     jogarNovamente.textContent = "Jogue novamente";
     jogarNovamente.addEventListener("click", () => {
         numQuestao = 0;
@@ -170,14 +170,17 @@ function mensagemFinal() {
         container.removeChild(jogarNovamente)
     })
 
-    const questionBox = document.getElementById("question-box");
+    
 
-    container.insertBefore(acertos, questionBox);
-    container.insertBefore(msg, acertos); // insere antes da caixa de perguntas
+    container.appendChild(acertos)
+    container.insertBefore(msg, acertos) 
     container.appendChild(jogarNovamente)
+    // Mostra conquista de acordo com o desempenho
     conquista();
-    // questionBox.innerHTML = ""; // limpa as perguntas
+ 
+    
 }
+//TROCAR PARA A PRÓXIMA QUESTÃO
 function trocarQuestao() {
 
     setTimeout(() => {
@@ -191,7 +194,7 @@ function trocarQuestao() {
 }
 
 // Inicia o quiz
-// mostrarQuestao(numQuestao);
+
 start()
 
 function start() {
@@ -202,12 +205,14 @@ function start() {
     container.classList.add("hide")
     const rep = document.getElementById("repositorios");
     const btn = document.querySelector(".btnEnviar")
+    // Evento de clique no botão "enviar"
     btn.addEventListener("click", (e) => {
         e.preventDefault();
         const repValor = rep.value
         
         iniciar.classList.add("hide")
         container.classList.remove("hide")
+          // Define qual conjunto de perguntas será usado
         if (repValor == "1") {
             questoesAtuais = questions
         }
@@ -222,7 +227,7 @@ function start() {
     })
     
 }
-
+//MENSAGEM DE CONQUISTA
 function conquista(){
      const gift = document.querySelector(".gift")
     if(respCorretas == 0 ){
@@ -244,11 +249,9 @@ function conquista(){
     else{
         gift.innerHTML = `<h3>${nivel5[Math.floor(Math.random()*nivel0.length)]}</h3>`;
     }
-
-
-
-
 }
+
+//NÍVEIS DE CONQUISTA
 const nivel0 = [
     "Se o JavaScript fosse uma briga... você só teria apanhado.",
     "Você errou tudo. Nem o console.log te reconheceria.",
